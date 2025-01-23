@@ -8,6 +8,7 @@ name = "Your Name"
 email = "your@mail.com"
 phone_number = "746732438"
 
+
 def test_auth(browser):
     ui = UI(browser)
     ui.open_page()
@@ -75,5 +76,4 @@ def test_order(browser):
     ui.go_to_cart()
     ui.remove_from_cart()
     ui.close_browser()
-
 

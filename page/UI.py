@@ -6,6 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException
 import allure
 
+
 class UI:
     def __init__(self, driver: WebDriver) -> None:
         self.__base_url = "https://www.chitai-gorod.ru/"
@@ -122,11 +123,13 @@ class UI:
         				Эта функция добавляет книгу в закладки.
         				Возвращает текущее кол-во книг в закладках
         """
-        element = self.__driver.find_element(By.CSS_SELECTOR, "button.button.favorite-button.light-blue.favorite-button__adaptive")
+        element = self.__driver.find_element(
+            By.CSS_SELECTOR, "button.button.favorite-button.light-blue.favorite-button__adaptive")
         self.__driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
         try:
             WebDriverWait(self.__driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "button.button.favorite-button.light-blue.favorite-button__adaptive"))
+                EC.element_to_be_clickable((
+                    By.CSS_SELECTOR, "button.button.favorite-button.light-blue.favorite-button__adaptive"))
             )
             element.click()
         except ElementClickInterceptedException:
@@ -137,7 +140,8 @@ class UI:
         """
         				Эта функция убирает книгу из закладки
         """
-        element = self.__driver.find_element(By.CSS_SELECTOR,
+        element = self.__driver.find_element(
+            By.CSS_SELECTOR,
                                              "button.button.favorite-button.green.favorite-button--active.favorite-button__adaptive")
         self.__driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
         try:
@@ -155,7 +159,8 @@ class UI:
         				Эта функция нажимает принять cookie если видит такой элемент на странице.
         """
         try:
-            button = self.__driver.find_element(By.CSS_SELECTOR, "button.button.cookie-notice__button.white")
+            button = self.__driver.find_element(By.CSS_SELECTOR,
+                                                "button.button.cookie-notice__button.white")
             button.click()
         except NoSuchElementException:
             pass
@@ -194,7 +199,8 @@ class UI:
         """
         				Эта функция удаляет книгу из корзины.
         """
-        self.__driver.find_element(By.CSS_SELECTOR, "button.button.cart-item__actions-button.cart-item__actions-button--delete.light-blue").click()
+        self.__driver.find_element(
+            By.CSS_SELECTOR, "button.button.cart-item__actions-button.cart-item__actions-button--delete.light-blue").click()
 
     @allure.step("Нажать оформить")
     def in_cart(self):
