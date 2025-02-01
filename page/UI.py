@@ -8,8 +8,8 @@ import allure
 
 
 class UI:
-    def __init__(self, driver: WebDriver) -> None:
-        self.__base_url = "https://www.chitai-gorod.ru/"
+    def __init__(self, driver: WebDriver, base_url: str) -> None:
+        self.__base_url = base_url
         self.__driver = driver
 
     @allure.step("Открыть сайт")
@@ -98,9 +98,6 @@ class UI:
         authors = self.__driver.find_elements(By.CSS_SELECTOR, "div.product-title__author")
         assert len(authors) > 0, "Авторы не найдены"
 
-    # @allure.step("Добавить в закладки")??????????????????????????????????
-    # def add_to_bookmark(self):?????????????????????????????удалить?
-    #     self.__driver.find_elements(By.CSS_SELECTOR, "button.favorite-button.light-blue.favorite-button__adaptive").click()
 
 
     @allure.step("Перейти в закладки")

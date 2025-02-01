@@ -1,0 +1,12 @@
+{
+  "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VzZXItcmlnaHQiLCJzdWIiOjkzODg2ODksImlhdCI6MTczODQwNTMxOCwiZXhwIjoxNzM4NDA4OTE4LCJ0eXBlIjoyMH0.q04D3cdEADLTl3NEx0EFicxoitT_bQEmFcFoMM_cIrg",
+  "search_by" : "Достоевский",
+  "name" : "Your Name",
+  "email" : "your@mail.com",
+  "phone_number" : "746732438",
+  "cyrillic_phrase" : "Бакман Фредрик",
+  "latin_phrase" : "Harry Potter",
+  "empty_phrase" : "",
+  "wrong_method_phrase" : "wrong method",
+  "hieroglyph_phrase" : "ぁあぃいうぉだ"
+}
