@@ -1,7 +1,8 @@
 import requests
-from urllib.parse import quote_plus
+import allure
 
 
+@allure.epic("API")
 class API:
     def __init__(self, base_url, token):
         self.base_url = base_url
@@ -9,6 +10,7 @@ class API:
             "Authorization": f"Bearer {token}"
         }
 
+    @allure.step("Отправляем поисковой запрос GET")
     def search_request(self, phrase):
         """
          Эта функция отправляет GET запрос.
@@ -33,6 +35,7 @@ class API:
             print(f"Ошибка при выполнении запроса: {e}")
             return None
 
+    @allure.step("Отправляем поисковой запрос POST")
     def search_request_with_post(self, phrase):
         """
         Отправляет POST-запрос для семантического поиска и возвращает ответ.
@@ -43,7 +46,8 @@ class API:
         url = f"{self.base_url}api/v1/recommend/semantic"
         data = {"phrase": phrase, "perPage": 48}
         try:
-            response = requests.post(url, headers=self.headers, json=data, timeout=10)
+            response = requests.post(
+                url, headers=self.headers, json=data, timeout=10)
             if response.status_code == 405:
                 return response
             response.raise_for_status()
@@ -52,7 +56,7 @@ class API:
             print(f"Ошибка запроса: {e}")
             return None
 
-
+    @allure.step("Отправляем поисковой запрос GET")
     def search_request_negative(self, phrase):
         """
         Отправляет GET-запрос.
@@ -67,6 +71,3 @@ class API:
         }
         response = requests.get(url, headers=self.headers, params=params)
         return response
-
-
-

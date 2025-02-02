@@ -1,7 +1,17 @@
+import os
 import json
 
-my_file = open('test_data.json')
-global_data = json.load(my_file)
+
+file_path = os.path.join(os.path.dirname(__file__),
+                         "..", "tests", "test_data.json")
+
+
+if not os.path.exists(file_path):
+    raise FileNotFoundError(
+        f"Файл {file_path} не найден! Убедитесь, что он существует.")
+
+with open(file_path, encoding="utf-8") as my_file:
+    global_data = json.load(my_file)
 
 class DataProvider:
     def __init__(self) -> None:
@@ -9,4 +19,3 @@ class DataProvider:
 
     def get(self, prop: str):
         return self.data.get(prop)
-
